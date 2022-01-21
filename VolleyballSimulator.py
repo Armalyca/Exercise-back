@@ -1,10 +1,11 @@
 from random import randint
+from decimal import Decimal
 
 # Ask the user for the probabilities of T1 winning when T1 is serving and converting to integer
-p1 = int(input("Enter p1 (as an integer between 0 and 100) : "))
+p1 = Decimal(input("Enter p1 (as a decimal between 0.0 and 1.0) : "))
 
 # Ask the user for the probabilities of T2 winning when T2 is serving and converting to integer
-p2 = int(input("Enter p2 (as an integer between 0 and 100) : "))
+p2 = Decimal(input("Enter p2 (as a decimal between 0.0 and 1.0) : "))
 
 
 ###### VARIABLES ######
@@ -38,7 +39,6 @@ def compute_points(s, p1, p2, pts1, pts2):
 
     # Return (as a tuple) a string of the score of this set at this point and the points of T1 and T2
     return str(pts1) + '-' + str(pts2), pts1, pts2
-
 
 # Function to compute a set with the probabilities given
 #
@@ -86,7 +86,7 @@ for i in range(1, 6):
 
     # We update the number of sets won by each team with the result of the compute_set function
     resultSet, toAddResult, listScores = compute_set(
-        maxPts, s, p1, p2, pts1, pts2, listScores, toAddResult)
+        maxPts, s, p1*100, p2*100, pts1, pts2, listScores, toAddResult)
     winSet1 += 1 if resultSet == 1 else 0
     winSet2 += 1 if resultSet == 2 else 0
 
